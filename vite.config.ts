@@ -3,21 +3,16 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
-  },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-}));
+// vite.config.js
 export default {
+  // ... existing config
   server: {
-    allowedHosts: ['ai-lost-and-found-1.onrender.com']
+    host: true, // listen on all addresses (needed on some hosts)
+    port: process.env.PORT ? Number(process.env.PORT) : 5173,
+    hmr: {
+      host: process.env.HOSTNAME || 'ai-lost-and-found-1.onrender.com',
+    },
+    allowedHosts: ['ai-lost-and-found-1.onrender.com'] // add your render url
   }
 }
+
