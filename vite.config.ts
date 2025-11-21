@@ -16,3 +16,8 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
+export default {
+  server: {
+    allowedHosts: ['ai-lost-and-found-1.onrender.com']
+  }
+}
