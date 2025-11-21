@@ -1,0 +1,29 @@
+{
+  "name": "lost-found-hub-backend",
+  "version": "1.0.0",
+  "description": "Backend for Lost & Found Hub with YOLOv8 object detection",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "postinstall": "node download_model.js"
+  },
+  "dependencies": {
+    "express": "^4.21.1",
+    "cors": "^2.8.5",
+    "multer": "^1.4.5-lts.1",
+    "socket.io": "^4.8.0",
+    "axios": "^1.7.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "keywords": [
+    "lost-and-found",
+    "yolo",
+    "object-detection",
+    "express"
+  ],
+  "author": "Lost & Found Hub Team",
+  "license": "MIT"
+}
