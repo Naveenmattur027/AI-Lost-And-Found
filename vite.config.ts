@@ -1,18 +1,17 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import path from "path";
-import { componentTagger } from "lovable-tagger";
+import { defineConfig } from 'vite'
 
-// vite.config.js
-export default {
-  // ... existing config
+export default defineConfig({
+  // ...other config (plugins etc.)
   server: {
-    host: true, // listen on all addresses (needed on some hosts)
-    port: process.env.PORT ? Number(process.env.PORT) : 5173,
+    host: true, // allow all network interfaces
+    port: Number(process.env.PORT) || 5173,
     hmr: {
-      host: process.env.HOSTNAME || 'ai-lost-and-found-1.onrender.com',
+      host: process.env.HOSTNAME || process.env.VITE_HOST || 'ai-lost-and-found-1.onrender.com'
     },
-    allowedHosts: ['ai-lost-and-found-1.onrender.com'] // add your render url
+    allowedHosts: [process.env.VITE_HOST || 'ai-lost-and-found-1.onrender.com']
+  },
+  preview: {
+    port: Number(process.env.PORT) || 5173,
+    strictPort: true
   }
-}
-
+})
